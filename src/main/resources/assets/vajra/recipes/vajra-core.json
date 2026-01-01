@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " C ",
+    "CNC",
+    "III"
+  ],
+  "key": {
+    "C": {
+      "item": "minecraft:chorus_fruit_popped"
+    },
+    "N": {
+      "item": "minecraft:nether_star"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "result": {
+    "item": "vajra:vajra-core"
+  },
+  "conditions": [
+    {
+      "type": "vajra:recipes"
+    }
+  ]
+}

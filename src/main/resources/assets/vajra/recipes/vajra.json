@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SMS",
+    "RCR",
+    "RBR"
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:shulker_shell"
+    },
+    "M": {
+      "item": "vajra:magnetron"
+    },
+    "C": {
+      "item": "vajra:vajra-core"
+    },
+    "R": {
+      "item": "minecraft:end_rod"
+    },
+    "B": {
+      "item": "minecraft:redstone_block"
+    }
+  },
+  "result": {
+    "item": "vajra:vajra"
+  },
+  "conditions": [
+    {
+      "type": "vajra:recipes"
+    }
+  ]
+}

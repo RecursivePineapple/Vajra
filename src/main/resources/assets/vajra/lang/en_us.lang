@@ -1,0 +1,10 @@
+
+item.vajra.name=Vajra
+item.vajra-core.name=Vajra Core
+item.magnetron.name=Magnetron
+
+vajra.tooltip.silk-hint=Right click the air while sneaking to toggle silk touch
+vajra.tooltip.charge=§b%,d / %,d RF
+
+vajra.silk.enabled=Silk Touch: §aEnabled§r
+vajra.silk.disabled=Silk Touch: §cDisabled§r

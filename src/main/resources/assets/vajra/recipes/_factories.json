@@ -1,0 +1,5 @@
+{
+  "conditions": {
+    "recipes": "vajra.utils.VajraRecipesConditionFactory"
+  }
+}
