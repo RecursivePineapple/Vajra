@@ -26,16 +26,24 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.energy.CapabilityEnergy;
 import net.minecraftforge.energy.IEnergyStorage;
+import net.minecraftforge.fml.common.Optional.Interface;
+import net.minecraftforge.fml.common.Optional.InterfaceList;
 
 import org.jetbrains.annotations.Nullable;
 
+import crazypants.enderio.api.tool.IHideFacades;
 import mcp.MethodsReturnNonnullByDefault;
 import vajra.Tags;
+import vajra.api.VajraAction;
 import vajra.config.VajraConfig;
+import vajra.utils.VajraAPIImpl;
 
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
-public class ItemVajra extends Item {
+@InterfaceList({
+    @Interface(modid = "enderio", iface = "crazypants.enderio.api.tool.IHideFacades")
+})
+public class ItemVajra extends Item implements IHideFacades {
 
     public static final ItemVajra INSTANCE = new ItemVajra();
 
@@ -116,7 +124,18 @@ public class ItemVajra extends Item {
 
             tag.setInteger("charge", charge - VajraConfig.chargePerUse);
 
-            world.destroyBlock(pos, true);
+            boolean actionRan = false;
+
+            for (VajraAction action : VajraAPIImpl.INSTANCE.actions.sorted()) {
+                if (action.onVajraBreak(world, pos, player, facing, hitX, hitY, hitZ)) {
+                    actionRan = true;
+                    break;
+                }
+            }
+
+            if (!actionRan) {
+                world.destroyBlock(pos, true);
+            }
         }
 
         return EnumActionResult.SUCCESS;
@@ -203,6 +222,14 @@ public class ItemVajra extends Item {
     @Override
     public @Nullable ICapabilityProvider initCapabilities(ItemStack stack, @Nullable NBTTagCompound nbt) {
         return new VajraEnergyStorage(stack);
+    }
+
+    @Override
+    public boolean shouldHideFacades(ItemStack stack, EntityPlayer player) {
+        NBTTagCompound tag = stack.getTagCompound();
+
+        // Only hide facades when silk mode is on
+        return tag != null && tag.getBoolean("silk");
     }
 
     private static class VajraEnergyStorage implements ICapabilityProvider, IEnergyStorage {

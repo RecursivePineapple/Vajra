@@ -6,7 +6,7 @@
     "mcversion": "${mcversion}",
     "logoFile": "",
     "url": "",
-    "authorList": [],
+    "authorList": ["Recursive Pineapple"],
     "credits": "",
     "dependencies": []
 }]

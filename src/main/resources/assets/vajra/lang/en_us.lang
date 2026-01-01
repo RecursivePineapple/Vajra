@@ -8,3 +8,5 @@ vajra.tooltip.charge=§b%,d / %,d RF
 
 vajra.silk.enabled=Silk Touch: §aEnabled§r
 vajra.silk.disabled=Silk Touch: §cDisabled§r
+
+vajra.config.interop=Mod Interop

@@ -38,9 +38,16 @@
  * For more details, see https://docs.gradle.org/8.4/userguide/java_library_plugin.html#sec:java_library_configurations_graph
  */
 dependencies {
+    compileOnly("org.jetbrains:annotations:26.0.2")
 
     // For charging
     runtimeOnlyNonPublishable(rfg.deobf("curse.maven:mcjtylib-233105:2745846"))
     runtimeOnlyNonPublishable(rfg.deobf("curse.maven:rftools-224641:2861573"))
 
+    devOnlyNonPublishable(rfg.deobf("curse.maven:ae2-extended-life-570458:5378163"))
+
+    devOnlyNonPublishable("com.enderio:endercore:0.5.78")
+    // https://mvnrepository.com/artifact/team.chisel.ctm/CTM
+    compileOnly("team.chisel.ctm:CTM:MC1.12.2-1.0.2.31")
+    devOnlyNonPublishable("crazypants:enderio:5.3.72")
 }

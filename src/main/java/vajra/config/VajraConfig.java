@@ -29,4 +29,15 @@ public class VajraConfig {
     @Config.Name("Add Vajra Recipes")
     public static boolean addRecipes = true;
 
+    @Config.Name("Mod Interop")
+    @Config.LangKey("vajra.config.interop")
+    public static final Interop interop = new Interop();
+
+    public static class Interop {
+        @Config.Name("Applied Energistics 2 Unofficial Extended Life")
+        public boolean ae2uel = true;
+
+        @Config.Name("Ender IO")
+        public boolean eio = true;
+    }
 }

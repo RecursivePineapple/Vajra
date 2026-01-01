@@ -11,7 +11,9 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
+import vajra.interop.VajraInterop;
 import vajra.items.ItemVajra;
+import vajra.utils.VajraAPIImpl;
 
 public class CommonProxy {
 
@@ -24,7 +26,7 @@ public class CommonProxy {
         .setRegistryName(Tags.MODID, "vajra-core");
 
     public void preInit(FMLPreInitializationEvent event) {
-
+        VajraAPIImpl.init();
     }
 
     public void registerItems(RegistryEvent.Register<Item> event) {
@@ -42,16 +44,15 @@ public class CommonProxy {
     }
 
     public void init(FMLInitializationEvent event) {
-
+        VajraInterop.init();
     }
 
     public void postInit(FMLPostInitializationEvent event) {
 
     }
 
-
     public void serverStarting(FMLServerStartingEvent event) {
-
+        Vajra.LOGGER.info("Vajra action check order: {}", VajraAPIImpl.INSTANCE.actions.sorted());
     }
 
     public Block registerBlock(Block block) {
@@ -73,5 +74,4 @@ public class CommonProxy {
     public void registerModel(Item item) {
 
     }
-
 }
