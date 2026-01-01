@@ -33,11 +33,8 @@ public interface IDependencyGraph<T> {
     boolean removeDependency(String object, String dependsOn);
 
     /// Adds a target. This acts like a systemd target - it can be thought of as a 'goal' instead of a discrete step.
-    /// As an example, if an integration module all block information to be written to perform some TileEntity
-    /// operation, the `configure-block` target can be used to force all block-modifying operations to run before the
-    /// TileEntity operation.
-    /// Note that these dependencies are registered manually - some integrations may not add the proper dependencies.
-    /// Optional dependencies can be used in this case, but it is heavily recommended to add dependencies for the
-    /// built-in targets as needed.
+    /// As an example, if an integration module needs the system to be in a specific state before it runs, it can
+    /// depend on a target. Any other objects that affect the target can add a `before:` dependency, which adds a
+    /// transient dependency between the first and second objects via the target.
     void addTarget(String targetName, String... deps);
 }
