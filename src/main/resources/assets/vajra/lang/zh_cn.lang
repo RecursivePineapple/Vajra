@@ -1,0 +1,12 @@
+
+item.vajra.name=金刚杵
+item.vajra-core.name=金刚杵核心
+item.magnetron.name=磁控管
+
+vajra.tooltip.silk-hint=对空气潜行右击来开关精准采集
+vajra.tooltip.charge=§b%,d / %,d RF
+
+vajra.silk.enabled=精准采集：§a已启用§r
+vajra.silk.disabled=精准采集：§c已禁用§r
+
+vajra.config.interop=模组兼容
