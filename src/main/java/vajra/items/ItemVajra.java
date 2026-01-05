@@ -4,12 +4,14 @@ import java.util.List;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -134,7 +136,9 @@ public class ItemVajra extends Item implements IHideFacades {
             }
 
             if (!actionRan) {
-                world.destroyBlock(pos, true);
+                world.playEvent(2001, pos, Block.getStateId(block));
+
+                ((EntityPlayerMP)player).interactionManager.tryHarvestBlock(pos);
             }
         }
 
