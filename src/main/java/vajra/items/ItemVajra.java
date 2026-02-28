@@ -55,6 +55,7 @@ public class ItemVajra extends Item implements IHideFacades {
         setTranslationKey("vajra");
         setMaxStackSize(1);
         setNoRepair();
+        setCreativeTab(CreativeTabs.TOOLS);
     }
 
     @Override
@@ -192,6 +193,8 @@ public class ItemVajra extends Item implements IHideFacades {
 
     @Override
     public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {
+        if (!this.isInCreativeTab(tab)) return;
+
         items.add(new ItemStack(INSTANCE));
 
         ItemStack charged = new ItemStack(INSTANCE);
