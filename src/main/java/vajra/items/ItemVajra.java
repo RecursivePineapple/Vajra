@@ -160,7 +160,9 @@ public class ItemVajra extends Item implements IHideFacades {
             boolean silk = !tag.getBoolean("silk");
             tag.setBoolean("silk", silk);
 
-            player.sendStatusMessage(new TextComponentTranslation(silk ? "vajra.silk.enabled" : "vajra.silk.disabled"), true);
+            if (world.isRemote) {
+                player.sendStatusMessage(new TextComponentTranslation(silk ? "vajra.silk.enabled" : "vajra.silk.disabled"), true);
+            }
 
             if (silk) {
                 //noinspection DataFlowIssue
