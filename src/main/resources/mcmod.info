@@ -1,11 +1,11 @@
 [{
     "modid": "${modid}",
     "name": "${modname}",
-    "description": "An example mod for Minecraft 1.12.2 with Forge",
+    "description": "A simple vajra port",
     "version": "${version}",
     "mcversion": "${mcversion}",
     "logoFile": "",
-    "url": "",
+    "url": "https://github.com/RecursivePineapple/Vajra",
     "authorList": ["Recursive Pineapple"],
     "credits": "",
     "dependencies": []
