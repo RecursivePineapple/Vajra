@@ -3,7 +3,6 @@ package vajra.interop;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
@@ -42,18 +41,23 @@ class AE2UELInterop {
                     }
 
                     cableBus.removePart(part.side, false);
+
+                    if (cableBus.isEmpty()) {
+                        world.setBlockToAir(pos);
+                    }
+
                     return true;
                 }
 
                 if (part != null && part.facade != null) {
-                    world.spawnEntity(new EntityItem(
-                        world,
-                        pos.getX() + hitSide.getXOffset() + 0.5,
-                        pos.getY() + hitSide.getYOffset() + 0.5,
-                        pos.getZ() + hitSide.getZOffset() + 0.5,
-                        part.facade.getItemStack()));
+                    VajraAction.spawnItem(world, pos, hitSide, part.facade.getItemStack());
 
                     cableBus.getFacadeContainer().removeFacade(cableBus, part.side);
+
+                    if (cableBus.isEmpty()) {
+                        world.setBlockToAir(pos);
+                    }
+
                     return true;
                 }
             }
